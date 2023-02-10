@@ -29,9 +29,6 @@ public class Book {
 
     String title;
     String author;
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "BOOK_ID", referencedColumnName = "ID")
-    private List<Recommandation> recommendations;
-    
+
 }
 

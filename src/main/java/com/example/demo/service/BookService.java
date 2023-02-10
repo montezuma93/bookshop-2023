@@ -3,6 +3,7 @@ package com.example.demo.service;
 import com.example.demo.domain.Book;
 import com.example.demo.domain.Recommandation;
 import com.example.demo.repository.BookRepository;
+import com.example.demo.repository.RecommandationRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,6 +16,9 @@ public class BookService {
 
     @Autowired
     BookRepository bookRepository;
+
+    @Autowired
+    RecommandationRepository recommandationRepository;
 
     public void save(Book book) {
         bookRepository.save(book);
@@ -34,8 +38,9 @@ public class BookService {
     public void addRecommandationByBook(String title, Recommandation recommandation) {
         List<Book> books = bookRepository.findAll();
         for(Book book : books){
-            if (title == book.getTitle()){
-                book.getRecommendations().add(recommandation);
+            if (title.equals(book.getTitle())){
+                recommandation.setBook(book);
+                recommandationRepository.save(recommandation);
                 save(book);
             }
         }

@@ -24,7 +24,7 @@ public class RecommandationController {
     public void saveRecommandation(
         @RequestParam String booktitle,
         @RequestBody Recommandation recommandation) {
-        recommandationService.save(recommandation);
         bookservice.addRecommandationByBook(booktitle, recommandation);
+        recommandationService.save(recommandation);
     }
 }
