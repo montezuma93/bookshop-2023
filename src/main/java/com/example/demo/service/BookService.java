@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import com.example.demo.domain.Book;
+import com.example.demo.domain.Recommandation;
 import com.example.demo.repository.BookRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,5 +29,15 @@ public class BookService {
 
     public List<Book> getAllBooks() {
         return bookRepository.findAll();
+    }
+
+    public void addRecommandationByBook(String title, Recommandation recommandation) {
+        List<Book> books = bookRepository.findAll();
+        for(Book book : books){
+            if (title == book.getTitle()){
+                book.getRecommendations().add(recommandation);
+                save(book);
+            }
+        }
     }
 }
