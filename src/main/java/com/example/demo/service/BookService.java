@@ -4,6 +4,7 @@ import com.example.demo.domain.Book;
 import com.example.demo.domain.Recommandation;
 import com.example.demo.repository.BookRepository;
 import com.example.demo.repository.RecommandationRepository;
+import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,6 +13,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
+@AllArgsConstructor
 public class BookService {
 
     @Autowired
