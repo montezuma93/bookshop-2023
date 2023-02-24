@@ -26,9 +26,15 @@ public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     Long id;
-
     String title;
     String author;
-
+    String description;
+    int price;
+    public Book(String title, String author, String description, int price){
+        this.title = title;
+        this.author = author;
+        this.description = description;
+        this.price = price;
+    }
 }
 
